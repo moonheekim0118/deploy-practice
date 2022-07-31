@@ -25,4 +25,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.STORYBOOK_PAGE_TOKEN }}
-          workingDir: frontend/packages/storybook
+          storybookBuildDir: storybook-static
+          workingDir: ./frontend/
