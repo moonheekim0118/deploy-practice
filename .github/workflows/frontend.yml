@@ -19,6 +19,8 @@ jobs:
 
       - name: Install NPM dependencies
         run: npm install
+        working-directory: ./frontend
 
       - name: Deploy Storybook
         run: npx chromatic --project-token=${{ env.PAGE_TOKEN }}
+        working-directory: ./frontend
