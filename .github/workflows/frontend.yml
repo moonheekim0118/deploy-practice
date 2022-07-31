@@ -1,26 +1,26 @@
-name: Front-End Storybook CI
+# name: Front-End Storybook CI
 
-on:
-  push:
-    branches: ["main"]
+# on:
+#   push:
+#     branches: ["main"]
 
-  workflow_dispatch:
+#   workflow_dispatch:
 
-jobs:
-  storybook-deploy:
-    runs-on: ubuntu-18.04
-    env:
-      working-directory: ./frontend
+# jobs:
+#   storybook-deploy:
+#     runs-on: ubuntu-18.04
+#     env:
+#       working-directory: ./frontend
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
-      - name: Install NPM dependencies
-        run: npm install
-        working-directory: ${{ env.working-directory }}
+#       - name: Install NPM dependencies
+#         run: npm install
+#         working-directory: ${{ env.working-directory }}
 
-      - name: Deploy Storybook
-        uses: chromaui/action@v1
-        run: npx chromatic --project-token=${{secrets.STORYBOOK_PAGE_TOKEN}}
-        working-directory: ${{ env.working-directory }}
+#       - name: Deploy Storybook
+#         uses: chromaui/action@v1
+#         run: npx chromatic --project-token=${{secrets.STORYBOOK_PAGE_TOKEN}}
+#         working-directory: ${{ env.working-directory }}
