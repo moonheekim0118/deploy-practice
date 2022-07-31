@@ -24,13 +24,6 @@ jobs:
         run: npm run build-storybook --quiet
         working-directory: ${{ env.working-directory }}
 
-      - name: Serve Storybook and run tests
-        working-directory: ${{ env.working-directory }}
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && npm test-storybook"
-
   # Run visual and composition tests with Chromatic
   visual-and-composition:
     runs-on: ubuntu-latest
