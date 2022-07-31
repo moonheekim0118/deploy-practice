@@ -27,6 +27,8 @@ jobs:
   # Run visual and composition tests with Chromatic
   visual-and-composition:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
         with:
