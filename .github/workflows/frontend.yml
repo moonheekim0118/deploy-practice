@@ -10,7 +10,6 @@ jobs:
   storybook-deploy:
     runs-on: ubuntu-18.04
     env:
-      name: STORYBOOK
       working-directory: ./frontend
 
     steps:
@@ -19,8 +18,8 @@ jobs:
 
       - name: Install NPM dependencies
         run: npm install
-        working-directory: ./frontend
+        working-directory: ${{ env.working-directory }}
 
       - name: Deploy Storybook
-        run: npx chromatic --project-token=${{ env.PAGE_TOKEN }}
-        working-directory: ./frontend
+        run: npx chromatic --project-token=${{secrets.STORYBOOK_PAGE_TOKEN}}
+        working-directory: ${{ env.working-directory }}
