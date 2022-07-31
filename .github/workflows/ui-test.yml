@@ -3,28 +3,6 @@ name: "UI Tests"
 on: push
 
 jobs:
-  interaction-and-accessibility:
-    runs-on: ubuntu-latest
-    env:
-      working-directory: ./frontend
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-      - name: Install dependencies
-        run: npm install
-        working-directory: ${{ env.working-directory }}
-
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-        working-directory: ${{ env.working-directory }}
-
-      - name: Build Storybook
-        run: npm run build-storybook --quiet
-        working-directory: ${{ env.working-directory }}
-
-  # Run visual and composition tests with Chromatic
   visual-and-composition:
     runs-on: ubuntu-latest
     env:
