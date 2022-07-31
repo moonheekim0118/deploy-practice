@@ -14,15 +14,23 @@ jobs:
           node-version: "14.x"
       - name: Install dependencies
         run: npm install
+        working-directory: ${{ env.working-directory }}
+
       - name: Install Playwright
         run: npx playwright install --with-deps
+        working-directory: ${{ env.working-directory }}
+
       - name: Build Storybook
         run: npm run build-storybook --quiet
+        working-directory: ${{ env.working-directory }}
+
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:6006 && npm test-storybook"
+         working-directory: ${{ env.working-directory }}
+
   # Run visual and composition tests with Chromatic
   visual-and-composition:
     runs-on: ubuntu-latest
@@ -30,10 +38,15 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Required to retrieve git history
+         working-directory: ${{ env.working-directory }}
+
       - name: Install dependencies
         run: npm install
+        working-directory: ${{ env.working-directory }}
+
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           # Grab this from the Chromatic manage page
           projectToken: ${{ secrets.STORYBOOK_PAGE_TOKEN }}
+        working-directory: ${{ env.working-directory }}
