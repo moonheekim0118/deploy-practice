@@ -20,4 +20,4 @@ jobs:
         uses: chromaui/action@v1
         with:
           # Grab this from the Chromatic manage page
-          projectToken: ${{ secrets.STORYBOOK_PAGE_TOKEN }}
+          projectToken: 3e3a065deebb
