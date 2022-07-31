@@ -30,7 +30,6 @@ jobs:
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:6006 && npm test-storybook"
-        
 
   # Run visual and composition tests with Chromatic
   visual-and-composition:
@@ -39,7 +38,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Required to retrieve git history
-         working-directory: ${{ env.working-directory }}
 
       - name: Install dependencies
         run: npm install
