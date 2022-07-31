@@ -2,7 +2,7 @@ name: "Storybook Build & Deploy"
 
 on:
   push:
-    paths: "frontend/**/*"
+    paths: "frontend/**"
 
 jobs:
   visual-and-composition:
